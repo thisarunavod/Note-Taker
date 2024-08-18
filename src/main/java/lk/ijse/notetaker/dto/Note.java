@@ -16,6 +16,6 @@ public class Note implements Serializable {
     private String noteTitle;
     private String noteDesc;
     private String priorityLevel;
-    private LocalDateTime creatDate;
+    private String creatDate;
 
 }
