@@ -39,8 +39,12 @@ public class DemoController {
 
     @PatchMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
-        System.out.println(noteId);
-        System.out.println(note+ " Updated");
+
+        boolean updateNote = noteBO.updateNote(noteId,note);
+        if(!updateNote){
+            System.out.println("Updated Successfully");
+        }
+
     }
     @DeleteMapping(value = "/{noteId}")
     public void deleteNote(@PathVariable ("noteId") String noteId) {

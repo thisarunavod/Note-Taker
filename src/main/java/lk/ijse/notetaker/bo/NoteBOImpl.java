@@ -18,7 +18,9 @@ public final class NoteBOImpl implements NoteBO {
 
     @Override
     public boolean updateNote(String noteId, NoteDTO noteDTO) {
-        return false;
+        /*return false;*/
+        return noteDTO == null;
+
     }
 
     @Override
