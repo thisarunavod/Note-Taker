@@ -16,7 +16,7 @@
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/AppInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/dto/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/dto/Note.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/dto/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/dto/NoteDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +173,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1723963838937</updated>
-      <workItem from="1723963841542" duration="6689000" />
+      <workItem from="1723963841542" duration="8946000" />
     </task>
     <servers />
   </component>
