@@ -1,7 +1,9 @@
 package lk.ijse.notetaker.controller;
 
 import lk.ijse.notetaker.Util.AppUtil;
+import lk.ijse.notetaker.bo.NoteBO;
 import lk.ijse.notetaker.dto.NoteDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +15,15 @@ import java.util.List;
 @RestController
 public class DemoController {
 
+    @Autowired
+    private NoteBO noteBO;
+
     //To do CRUD Opertations
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createNote(@RequestBody NoteDTO note){
         //To do Handle with BO
-        note.setNoteId(AppUtil.createNoteID());
-        System.out.println(note);
-        return ResponseEntity.ok("Note Created Successfully");
+        var saveData = noteBO.saveData(note);
+        return ResponseEntity.ok(saveData);
     }
 
     @GetMapping(value = "allNotes",produces = MediaType.APPLICATION_JSON_VALUE)
