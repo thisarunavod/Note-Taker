@@ -9,10 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="update,  delete  on Collection array">
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/service/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/service/NoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/service/NoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/service/NoteServiceImpl.java" afterDir="false" />
+    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="Spring Data (database)">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/entity/NoteEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/config/WebAppRootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/config/WebAppRootConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +65,18 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "NoteTaker-2024-8-25",
-    "last_opened_file_path": "/home/thisaru/IdeaProjects/noteTaker",
+    "last_opened_file_path": "/home/thisaru/IdeaProjects/HibernateTest",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -178,7 +185,7 @@
       <option name="presentableId" value="Default" />
       <updated>1723963838937</updated>
       <workItem from="1723963841542" duration="10788000" />
-      <workItem from="1724552616549" duration="13514000" />
+      <workItem from="1724552616549" duration="23387000" />
     </task>
     <task id="LOCAL-00001" summary="update,  delete  on Collection array">
       <option name="closed" value="true" />
@@ -196,15 +203,35 @@
       <option name="project" value="LOCAL" />
       <updated>1724564662799</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Spring Data (database)">
+      <option name="closed" value="true" />
+      <created>1724578862971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724578862971</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update,  delete  on Collection array" />
-    <option name="LAST_COMMIT_MESSAGE" value="update,  delete  on Collection array" />
+    <MESSAGE value="Spring Data (database)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Data (database)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
