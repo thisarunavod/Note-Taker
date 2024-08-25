@@ -9,9 +9,7 @@ public sealed interface NoteService permits NoteServiceImpl {
     String saveData(NoteDTO noteDTO);
     boolean updateNote(String noteId,NoteDTO noteDTO);
     boolean deleteNote( String noteId );
-
     NoteDTO getSelectedNote(String noteId);
-
     List<NoteDTO> getAllNotes();
 
 
