@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 
 @Service               /*  <------  Spring ta baradenawa  */
@@ -29,19 +30,67 @@ public final class NoteServiceImpl implements NoteService {
 
     @Override
     public boolean updateNote(String noteId, NoteDTO noteDTO) {
-        /*return false;*/
-        return noteDTO != null;
 
-    }
+        /*for (NoteDTO dto: saveNoteTemp) {
+            if (dto.getNoteId().equals(noteId)) {
 
-    @Override
-    public boolean deleteNote(String noteId) {
+                dto.setNoteTitle(noteDTO.getNoteTitle());
+                dto.setNoteDesc(noteDTO.getNoteDesc());
+                dto.setPriorityLevel(noteDTO.getPriorityLevel());
+                dto.setCreatDate(noteDTO.getCreatDate());
+
+                System.out.println(dto);
+                return true;
+            }
+        }
+        return false;*/
+
+        /*This is a Safe Method*/
+        ListIterator<NoteDTO> updatedList = saveNoteTemp.listIterator();
+        while (updatedList.hasNext()) {
+            NoteDTO dto = updatedList.next();
+            if (noteId.equals(dto.getNoteId())) {
+                noteDTO.setNoteId(dto.getNoteId());
+                updatedList.set(noteDTO);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
+    public boolean deleteNote(String noteId) {
+
+
+        /*for (NoteDTO noteDTO : saveNoteTemp) {
+            if (noteDTO.getNoteId().equals(noteId)) {
+                saveNoteTemp.remove(noteDTO);
+                System.out.println(saveNoteTemp.size());
+                return true;
+            }
+        }
+        return false;*/
+
+        /* this is a Safe Method */
+        ListIterator<NoteDTO> tmpList = saveNoteTemp.listIterator();
+        while (tmpList.hasNext()) {
+            NoteDTO noteDTO = tmpList.next();
+            if (noteId.equals(noteDTO.getNoteId())) {
+                tmpList.remove();
+                return true;
+            }
+        }
+         return false;
+    }
+
+    @Override
     public NoteDTO getSelectedNote(String noteId) {
-        return null;
+
+        NoteDTO noteDTO = new NoteDTO();
+        for (int i = 0; i < saveNoteTemp.size(); i++) {
+            if (saveNoteTemp.get(i).getNoteId().equals(noteId))  noteDTO = saveNoteTemp.get(i);
+        }
+        return noteDTO;
     }
 
     @Override

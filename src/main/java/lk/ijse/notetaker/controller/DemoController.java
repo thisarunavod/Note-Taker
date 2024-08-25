@@ -33,19 +33,24 @@ public class DemoController {
     @GetMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public NoteDTO getNote(@PathVariable("noteId") String noteId){
         System.out.println(noteId);
-        return null;
+        return noteService.getSelectedNote(noteId);
     }
 
     @PatchMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
 
         boolean updateNote = noteService.updateNote(noteId,note);
-        if(updateNote) System.out.println("Updated Successfully !!");
+        if(updateNote) System.out.println(noteId +" : Updated Successfully !!");
 
     }
     @DeleteMapping(value = "/{noteId}")
     public void deleteNote(@PathVariable ("noteId") String noteId) {
-        System.out.println(noteId + " Deleted");
+//        System.out.println(noteId + " Deleted");
+         if (noteService.deleteNote(noteId)) System.out.println(noteId +" : is Deleted");
+         else {
+             System.out.println("Not Identfied this ID");
+         }
+
     }
 
 }
