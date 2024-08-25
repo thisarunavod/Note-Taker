@@ -1,7 +1,6 @@
 package lk.ijse.notetaker.controller;
 
-import lk.ijse.notetaker.Util.AppUtil;
-import lk.ijse.notetaker.bo.NoteBO;
+import lk.ijse.notetaker.service.NoteService;
 import lk.ijse.notetaker.dto.NoteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,19 +15,19 @@ import java.util.List;
 public class DemoController {
 
     @Autowired
-    private NoteBO noteBO;
+    private NoteService noteService;
 
     //To do CRUD Opertations
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createNote(@RequestBody NoteDTO note){
         //To do Handle with BO
-        var saveData = noteBO.saveData(note);
+        var saveData = noteService.saveData(note);
         return ResponseEntity.ok(saveData);
     }
 
-    @GetMapping(value = "allNotes",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "allNotes",produces = MediaType.APPLICATION_JSON_VALUE)  /* */
     public List<NoteDTO> getAllNotes(){
-        return null;
+        return noteService.getAllNotes();
     }
 
     @GetMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,10 +39,8 @@ public class DemoController {
     @PatchMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
 
-        boolean updateNote = noteBO.updateNote(noteId,note);
-        if(!updateNote){
-            System.out.println("Updated Successfully");
-        }
+        boolean updateNote = noteService.updateNote(noteId,note);
+        if(updateNote) System.out.println("Updated Successfully !!");
 
     }
     @DeleteMapping(value = "/{noteId}")
