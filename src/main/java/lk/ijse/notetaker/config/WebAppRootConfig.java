@@ -2,6 +2,7 @@ package lk.ijse.notetaker.config;
 
 
 import jakarta.persistence.EntityManagerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = "lk.ijse.notetaker")
 @EnableWebMvc
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "lk.ijse.notetaker")
 @EnableTransactionManagement
 
 public class WebAppRootConfig {
@@ -61,6 +62,9 @@ public class WebAppRootConfig {
         txManager.setEntityManagerFactory(entityManagerFactory);
         return txManager;
     }
+
+    @Bean
+    public ModelMapper modelMapper(){ return new ModelMapper();}
 
 
     /* main configuration 3 methana karala tiyanawa.OK

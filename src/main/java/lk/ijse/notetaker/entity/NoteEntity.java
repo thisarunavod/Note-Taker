@@ -3,6 +3,7 @@ package lk.ijse.notetaker.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lk.ijse.notetaker.dto.NoteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,5 @@ public class NoteEntity {
     private String noteDesc;
     private String priorityLevel;
     private String creatDate;
+
 }
