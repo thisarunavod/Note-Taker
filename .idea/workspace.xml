@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="configure entity Manager">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/entity/UserEntity.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="configure entity Manager" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -193,7 +190,7 @@
       <workItem from="1723963841542" duration="10788000" />
       <workItem from="1724552616549" duration="27033000" />
       <workItem from="1725158585466" duration="3838000" />
-      <workItem from="1725169677303" duration="12554000" />
+      <workItem from="1725169677303" duration="13406000" />
     </task>
     <task id="LOCAL-00001" summary="update,  delete  on Collection array">
       <option name="closed" value="true" />
