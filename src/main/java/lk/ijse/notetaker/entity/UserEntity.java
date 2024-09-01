@@ -1,5 +1,4 @@
 package lk.ijse.notetaker.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +31,5 @@ public class UserEntity implements SuperEntity {
 
     @OneToMany(mappedBy = "user")
     private List<NoteEntity> notes;
-
-
 
 }
