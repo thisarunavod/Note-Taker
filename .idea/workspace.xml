@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="genarate user id">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/controller/UserController.java" afterDir="false" />
+    <list default="true" id="6f9b0a9b-1db6-4ce3-a1ac-ef4cd4a2102f" name="Changes" comment="configure entity Manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/AppInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/notetaker/entity/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -194,7 +193,7 @@
       <workItem from="1723963841542" duration="10788000" />
       <workItem from="1724552616549" duration="27033000" />
       <workItem from="1725158585466" duration="3838000" />
-      <workItem from="1725169677303" duration="15172000" />
+      <workItem from="1725169677303" duration="12554000" />
     </task>
     <task id="LOCAL-00001" summary="update,  delete  on Collection array">
       <option name="closed" value="true" />
@@ -228,39 +227,7 @@
       <option name="project" value="LOCAL" />
       <updated>1724582033058</updated>
     </task>
-    <task id="LOCAL-00005" summary="genarate user id">
-      <option name="closed" value="true" />
-      <created>1725184566993</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1725184566993</updated>
-    </task>
-    <task id="LOCAL-00006" summary="genarate user id">
-      <option name="closed" value="true" />
-      <created>1725184581354</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1725184581354</updated>
-    </task>
-    <task id="LOCAL-00007" summary="genarate user id">
-      <option name="closed" value="true" />
-      <created>1725184592943</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1725184592943</updated>
-    </task>
-    <task id="LOCAL-00008" summary="genarate user id">
-      <option name="closed" value="true" />
-      <created>1725186293937</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1725186293937</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +248,6 @@
     <MESSAGE value="update,  delete  on Collection array" />
     <MESSAGE value="Spring Data (database)" />
     <MESSAGE value="configure entity Manager" />
-    <MESSAGE value="genarate user id" />
-    <option name="LAST_COMMIT_MESSAGE" value="genarate user id" />
+    <option name="LAST_COMMIT_MESSAGE" value="configure entity Manager" />
   </component>
 </project>
