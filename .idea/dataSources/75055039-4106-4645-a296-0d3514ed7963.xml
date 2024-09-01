@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="noteTaker@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.49">
-    <root id="1"/>
+    <root id="1">
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <ServerVersion>8.0.36</ServerVersion>
+    </root>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
     </collation>
@@ -924,8 +928,8 @@
     </schema>
     <schema id="295" parent="1" name="noteTaker">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-08-25.22:29:26</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-08-25.11:29:26</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2024-09-01.19:52:51</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2024-09-01.08:52:51</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="296" parent="1" name="performance_schema">
@@ -967,36 +971,97 @@
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="306" parent="305" name="noteId">
+    <table id="306" parent="295" name="user">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="307" parent="305" name="noteId">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="307" parent="305" name="creatDate">
+    <column id="308" parent="305" name="creatDate">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="308" parent="305" name="noteDesc">
+    <column id="309" parent="305" name="noteDesc">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="309" parent="305" name="noteTitle">
+    <column id="310" parent="305" name="noteTitle">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="310" parent="305" name="priorityLevel">
+    <column id="311" parent="305" name="priorityLevel">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <index id="311" parent="305" name="PRIMARY">
+    <column id="312" parent="305" name="userId">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="313" parent="305" name="FK2m0ap28n1jo6i065qbwxy7wcq">
+      <ColNames>userId</ColNames>
+      <RefColNames>userId</RefColNames>
+      <RefTableName>user</RefTableName>
+    </foreign-key>
+    <index id="314" parent="305" name="PRIMARY">
       <ColNames>noteId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="312" parent="305" name="PRIMARY">
+    <index id="315" parent="305" name="FK2m0ap28n1jo6i065qbwxy7wcq">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="316" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="317" parent="306" name="userId">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="318" parent="306" name="email">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="319" parent="306" name="firstName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="320" parent="306" name="lastName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="321" parent="306" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="322" parent="306" name="profilePic">
+      <DasType>longtext|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <index id="323" parent="306" name="PRIMARY">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="324" parent="306" name="UKob8kqyqqgmefl0aco34akdtpe">
+      <ColNames>email</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="325" parent="306" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="326" parent="306" name="UKob8kqyqqgmefl0aco34akdtpe">
+      <UnderlyingIndexName>UKob8kqyqqgmefl0aco34akdtpe</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

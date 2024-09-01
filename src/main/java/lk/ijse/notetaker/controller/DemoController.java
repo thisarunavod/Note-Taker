@@ -18,6 +18,11 @@ public class DemoController {
     @Autowired
     private NoteService noteService;
 
+    @GetMapping("health")   /* Application eka run completely run wenawada kiyala balanawaa*/
+    public String healthCheck(){
+        return "note taker is running";
+    }
+
     //To do CRUD Opertations
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createNote(@RequestBody NoteDTO note){
