@@ -18,6 +18,11 @@ public class DemoController {
     @Autowired
     private NoteService noteService;
 
+    @GetMapping("health")   /* Application eka run completely run wenawada kiyala balanawaa*/
+    public String healthCheck(){
+        return "note taker is running";
+    }
+
     //To do CRUD Opertations
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createNote(@RequestBody NoteDTO note){
@@ -26,32 +31,36 @@ public class DemoController {
         return ResponseEntity.ok(saveData);
     }
 
-    @GetMapping(value = "allNotes",produces = MediaType.APPLICATION_JSON_VALUE)  /* */
+    @GetMapping(value = "allNotes",produces = MediaType.APPLICATION_JSON_VALUE)  /* jackson tmy object bind karanne */
     public List<NoteDTO> getAllNotes(){
         return noteService.getAllNotes();
     }
 
-    @GetMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)  /*  */
     public NoteDTO getNote(@PathVariable("noteId") String noteId){
         System.out.println(noteId);
         return noteService.getSelectedNote(noteId);
     }
 
     @PatchMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public void updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
+    public ResponseEntity<String> updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
 
-        boolean updateNote = noteService.updateNote(noteId,note);
-        if(updateNote) System.out.println(noteId +" : Updated Successfully !!");
+        return noteService.updateNote(noteId,note) ?
+                new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                :new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{noteId}")
-    public void deleteNote(@PathVariable ("noteId") String noteId) {
+    public ResponseEntity<String> deleteNote(@PathVariable ("noteId") String noteId) {
 //        System.out.println(noteId + " Deleted");
-         if (noteService.deleteNote(noteId)) System.out.println(noteId +" : is Deleted");
+         /*if (noteService.deleteNote(noteId)) return ResponseEntity.ok(noteId + " is Deleted !! ");
          else {
-             System.out.println("Not Identfied this ID");
-         }
+             return ResponseEntity.ok(noteId+ "  is not registered ");
+         }*/
+
+        return noteService.deleteNote(noteId) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }
