@@ -21,23 +21,22 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = "lk.ijse.notetaker")
-@EnableWebMvc
+//@EnableWebMvc
 @EnableJpaRepositories(basePackages = "lk.ijse.notetaker")
 @EnableTransactionManagement
 
-public class WebAppRootConfig {
+public class WebAppRootConfig {  //<---- DAO layer සම්බන්ද configurations එවා තමයි මෙකට දා න්නී
     /*@Bean   --> source code naaa eeky dala tyenne  */
     @Bean
     public DataSource dataSource() {
 
-        /*EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL).build();*/
         var dmds = new DriverManagerDataSource();
         dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dmds.setUrl("jdbc:mysql://localhost:3306/noteTaker?createDatabaseIfNotExist=true");
         dmds.setUsername("root");
         dmds.setPassword("Ijse@1234");
         return dmds;
+
     }
 
     @Bean
@@ -107,7 +106,5 @@ public class WebAppRootConfig {
 
 
     */
-
-
 
 }
