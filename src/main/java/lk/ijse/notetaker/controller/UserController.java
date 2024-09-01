@@ -1,5 +1,8 @@
 package lk.ijse.notetaker.controller;
 
+import jdk.jshell.execution.Util;
+import lk.ijse.notetaker.Util.AppUtil;
+import lk.ijse.notetaker.dto.UserDTO;
 import lk.ijse.notetaker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,8 +30,19 @@ public class UserController {
             @RequestPart("profilePic") String profilePic) {
 
 
-        // handle profile picture
+        // Handle profile picture
+        String base64ProfilePic = AppUtil.toBase64ProfilePic(profilePic); /* <--- converting to base64 format*/
 
+        // build the user
+        UserDTO buildUserDTO = new UserDTO();
+        buildUserDTO.setFirstName(firstName);
+        buildUserDTO.setLastName(lastName);
+        buildUserDTO.setPassword(password);
+        buildUserDTO.setEmail(email);
+        buildUserDTO.setProfilePic(base64ProfilePic);
+
+        //Send to service layer
+        userService.saveUser(buildUserDTO);
 
     }
 

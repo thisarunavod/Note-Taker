@@ -10,7 +10,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService{
     @Override
-    public String userData(UserDTO userDTO) {
+    public String saveUser(UserDTO userDTO) {
         return null;
     }
 
