@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -32,24 +34,32 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean updateUser(String userId, UserDTO userDTO) {
-        return false;
+
+        Optional<UserEntity> tmpUserEntity = userDao.findById(userId);
+        if (!tmpUserEntity.isPresent()) return false ;
+        else{
+            tmpUserEntity.get().setFirstName(userDTO.getFirstName());
+            tmpUserEntity.get().setLastName(userDTO.getLastName());
+            tmpUserEntity.get().setEmail(userDTO.getEmail());
+            tmpUserEntity.get().setPassword(userDTO.getPassword());
+            tmpUserEntity.get().setProfilePic(userDTO.getProfilePic());
+            return true ;
+        }
+
     }
 
     @Override
     public boolean deleteUser(String userId) {
-        /*if (noteDao.existsById(noteId)) {noteDao.deleteById(noteId); return true;}
-        return false;*/
-
         if ( userDao.existsById(userId)) { userDao.deleteById(userId); return true;} return false;
     }
 
     @Override
     public UserDTO getSelectedUser(String userId) {
-        return null;
+        return mapping.convertToUserDTO(userDao.getUserEntityByUserId(userId));
     }
 
     @Override
-    public List<NoteDTO> getAllUser() {
-        return null;
+    public List<UserDTO> getAllUser() {
+        return mapping.convertToUserDTOList(userDao.findAll());
     }
 }

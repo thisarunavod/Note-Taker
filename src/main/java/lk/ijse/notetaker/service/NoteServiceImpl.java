@@ -66,9 +66,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDTO> getAllNotes() {
-
         return mapping.convertToDTOList(noteDao.findAll());
-
     }
 
 }
