@@ -5,6 +5,7 @@ import lk.ijse.notetaker.Util.AppUtil;
 import lk.ijse.notetaker.dto.UserDTO;
 import lk.ijse.notetaker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -42,7 +43,8 @@ public class UserController {
         buildUserDTO.setProfilePic(base64ProfilePic);
 
         //Send to service layer
-        userService.saveUser(buildUserDTO);
+
+        return new ResponseEntity<>(userService.saveUser(buildUserDTO), HttpStatus.CREATED);
 
     }
 
