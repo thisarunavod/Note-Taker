@@ -4,18 +4,17 @@ import jdk.jshell.execution.Util;
 import lk.ijse.notetaker.Util.AppUtil;
 import lk.ijse.notetaker.dto.UserDTO;
 import lk.ijse.notetaker.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
 
     @Autowired
@@ -43,10 +42,16 @@ public class UserController {
         buildUserDTO.setProfilePic(base64ProfilePic);
 
         //Send to service layer
-
         return new ResponseEntity<>(userService.saveUser(buildUserDTO), HttpStatus.CREATED);
 
     }
 
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") String userId) {
+         return userService.deleteUser(userId) ?
+                 new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                 : new ResponseEntity<>(HttpStatus.NOT_FOUND) ;
+
+    }
 }

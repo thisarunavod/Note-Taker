@@ -37,7 +37,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean deleteUser(String userId) {
-        return false;
+        /*if (noteDao.existsById(noteId)) {noteDao.deleteById(noteId); return true;}
+        return false;*/
+
+        if ( userDao.existsById(userId)) { userDao.deleteById(userId); return true;} return false;
     }
 
     @Override
