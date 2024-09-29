@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -33,11 +34,12 @@ public class UserController {
             @RequestPart("lastName") String lastName,
             @RequestPart("password") String password,
             @RequestPart("email") String email,
-            @RequestPart("profilePic") String profilePic) {
+            @RequestPart("profilePic") MultipartFile profilePic) {
 
         try {
             // Handle profile picture
-            String base64ProfilePic = AppUtil.toBase64ProfilePic(profilePic); /* <--- converting to base64 format*/
+            byte[] imageByteCollection = profilePic.getBytes();
+            String base64ProfilePic = AppUtil.toBase64ProfilePic(imageByteCollection); /* <--- converting to base64 format*/
 
             // build the user
             UserDTO buildUserDTO = new UserDTO();
@@ -87,10 +89,11 @@ public class UserController {
                                               @RequestPart("lastName") String updateLastName,
                                               @RequestPart("password") String updatePassword,
                                               @RequestPart("email") String updateEmail,
-                                              @RequestPart("profilePic") String updateProfilePic){
+                                              @RequestPart("profilePic") MultipartFile updateProfilePic){
 
         try {
-            String updateBase64ProfilePic = AppUtil.toBase64ProfilePic(updateProfilePic);
+            byte[] imageByteCollection = updateProfilePic.getBytes();
+            String updateBase64ProfilePic = AppUtil.toBase64ProfilePic(imageByteCollection);
             UserDTO userDTO = new UserDTO();
             userDTO.setUserId(userId);
             userDTO.setFirstName(updateFirstName);

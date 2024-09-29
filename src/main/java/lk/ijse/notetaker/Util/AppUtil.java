@@ -16,9 +16,9 @@ public class AppUtil {
     public static String createUserID(){
         return "USER "+UUID.randomUUID();
     }
-    public static String toBase64ProfilePic(String profilePic){
+    public static String toBase64ProfilePic(byte[] profilePic){
         // base64 formatt ekata ape file format eka convert karaa  //
-        return Base64.getEncoder().encodeToString(profilePic.getBytes());
+        return Base64.getEncoder().encodeToString(profilePic);
 
     }
 
