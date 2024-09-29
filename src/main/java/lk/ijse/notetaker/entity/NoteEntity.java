@@ -1,7 +1,6 @@
 package lk.ijse.notetaker.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.notetaker.dto.NoteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +24,6 @@ public class NoteEntity implements SuperEntity {
     private String noteDesc;
     private String priorityLevel;
     private String creatDate;
+
 
 }

@@ -3,10 +3,13 @@ package lk.ijse.notetaker.service;
 import jakarta.transaction.Transactional;
 import lk.ijse.notetaker.Util.AppUtil;
 import lk.ijse.notetaker.Util.Mapping;
+import lk.ijse.notetaker.customObj.UserErrorResponse;
+import lk.ijse.notetaker.customObj.UserResponse;
 import lk.ijse.notetaker.dao.UserDao;
-import lk.ijse.notetaker.dto.NoteDTO;
-import lk.ijse.notetaker.dto.UserDTO;
+import lk.ijse.notetaker.dto.impl.UserDTO;
 import lk.ijse.notetaker.entity.UserEntity;
+import lk.ijse.notetaker.exeption.DataPersistFailedException;
+import lk.ijse.notetaker.exeption.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,36 +29,49 @@ public class UserServiceImpl implements UserService{
     private Mapping mapping;
 
     @Override
-    public String saveUser(UserDTO userDTO) {
+    public void saveUser(UserDTO userDTO) {
         userDTO.setUserId(AppUtil.createUserID());
-        userDao.save(mapping.convertToUserEntity(userDTO));
-        return "User Saved Successfully !! ";
+        UserEntity saveUser = userDao.save(mapping.convertToUserEntity(userDTO));
+
+        if (saveUser == null  &&  saveUser.getUserId() == null) throw new DataPersistFailedException( "Cannot Data Saved");
+
+
     }
 
     @Override
-    public boolean updateUser(String userId, UserDTO userDTO) {
+    public void updateUser(String userId, UserDTO userDTO) {
 
         Optional<UserEntity> tmpUserEntity = userDao.findById(userId);
-        if (!tmpUserEntity.isPresent()) return false ;
+        if (!tmpUserEntity.isPresent()) { throw  new UserNotFoundException("User Not Found !!"); }
         else{
             tmpUserEntity.get().setFirstName(userDTO.getFirstName());
             tmpUserEntity.get().setLastName(userDTO.getLastName());
             tmpUserEntity.get().setEmail(userDTO.getEmail());
             tmpUserEntity.get().setPassword(userDTO.getPassword());
             tmpUserEntity.get().setProfilePic(userDTO.getProfilePic());
-            return true ;
         }
 
     }
 
     @Override
-    public boolean deleteUser(String userId) {
-        if ( userDao.existsById(userId)) { userDao.deleteById(userId); return true;} return false;
+    public void deleteUser(String userId) {
+        Optional<UserEntity> tmpEntity = userDao.findById(userId);
+        if (  !tmpEntity.isPresent() ) {
+            throw new UserNotFoundException("User Not Found");
+        } else {
+            userDao.deleteById(userId);
+        }
     }
 
     @Override
-    public UserDTO getSelectedUser(String userId) {
-        return mapping.convertToUserDTO(userDao.getUserEntityByUserId(userId));
+    public UserResponse getSelectedUser(String userId) {
+
+        if (userDao.existsById(userId)){
+            UserEntity userEntityByUserId = userDao.getUserEntityByUserId(userId);
+            return mapping.convertToUserDTO(userEntityByUserId);
+        } else {
+            return new UserErrorResponse(0, "User not found");
+        }
     }
 
     @Override

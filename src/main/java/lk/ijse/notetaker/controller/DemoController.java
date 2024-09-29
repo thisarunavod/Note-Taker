@@ -1,7 +1,8 @@
 package lk.ijse.notetaker.controller;
 
+import lk.ijse.notetaker.exeption.NoteNotFoundException;
 import lk.ijse.notetaker.service.NoteService;
-import lk.ijse.notetaker.dto.NoteDTO;
+import lk.ijse.notetaker.dto.impl.NoteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RequestMapping("api/v1/notes")
 @RestController
@@ -43,11 +43,19 @@ public class DemoController {
     }
 
     @PatchMapping(value = "/{noteId}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
+    public ResponseEntity<Void> updateNote(@PathVariable("noteId") String noteId , @RequestBody NoteDTO note){
 
-        return noteService.updateNote(noteId,note) ?
+        /*return noteService.updateNote(noteId,note) ?
                 new ResponseEntity<>(HttpStatus.NO_CONTENT)
-                :new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                :new ResponseEntity<>(HttpStatus.NOT_FOUND);*/
+        try {
+            noteService.updateNote(noteId, note);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (NoteNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
